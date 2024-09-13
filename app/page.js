@@ -1,11 +1,12 @@
 import Link from "next/link";
-import ShoppingList from "./week-2/page";
 
 export default function Home() {
   return (
     <main>
       <h1 className="text-2xl">CPRG 306: Web Development 2 - Assignments</h1>
-      <ShoppingList />
+      <Link href="./week-2" className="text-cyan-300 hover:text-cyan-500">
+        week-2 page
+      </Link>
     </main>
   );
 }
