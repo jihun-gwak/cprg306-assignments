@@ -19,13 +19,15 @@ export default function ItemList() {
     setSortBy("grouped");
   };
 
-  const renderItems = () => {
+  const displayItems = () => {
     if (sortBy === "grouped") {
       const grouped = data.reduce((acc, item) => {
         const category = item.category;
+
         if (!acc[category]) {
           acc[category] = [];
         }
+
         acc[category].push(item);
         return acc;
       }, {});
@@ -104,7 +106,7 @@ export default function ItemList() {
         </button>
       </div>
       <h1 className="text-4xl font-extrabold">Shopping List</h1>
-      <ul>{renderItems()}</ul>
+      <ul>{displayItems()}</ul>
     </main>
   );
 }
