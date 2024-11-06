@@ -77,8 +77,8 @@ export default function ItemList({ items, onItemSelect }) {
 
   return (
     <div>
-      <div className="flex items-center ml-4">
-        <p className="text-lg">Sort by: </p>
+      <div className="flex items-center">
+        <p className="text-lg ml-4">Sort by: </p>
         <button
           type="button"
           className={`${

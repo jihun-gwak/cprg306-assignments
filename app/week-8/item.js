@@ -1,3 +1,5 @@
+"use client";
+
 export default function Item({ name, quantity, category, onSelect }) {
   return (
     <div
