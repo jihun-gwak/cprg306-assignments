@@ -12,11 +12,9 @@ export default function Page() {
   const [selectedItemName, setSelectedItemName] = useState("");
   const { user } = useUserAuth();
 
-  const totalItem = async (newItem) => {
-    if (user) {
-      const id = await addItem(user.uid, newItem);
-      setItems((prevItems) => [...prevItems, { ...newItem, id }]);
-    }
+  const handleAddItem = async (newItem) => {
+    const id = await addItem(user.uid, newItem);
+    setItems((prevItems) => [...prevItems, { ...newItem, id }]);
   };
 
   const handleItemSelect = (itemName) => {
@@ -42,24 +40,22 @@ export default function Page() {
     loadItems();
   }, [user]);
 
-  return (
-    user ?? (
-      <main className="flex">
-        <div>
-          <h1 className="text-4xl py-4 pl-4 font-extrabold">Shopping List</h1>
-          <AddItem onAddItem={totalItem} />
-          <ItemList items={items} onItemSelect={handleItemSelect} />
-        </div>
+  return user ? (
+    <main className="flex">
+      <div>
+        <h1 className="text-4xl py-4 pl-4 font-extrabold">Shopping List</h1>
+        <AddItem onAddItem={handleAddItem} />
+        <ItemList items={items} onItemSelect={handleItemSelect} />
+      </div>
 
-        <div className="flex-1 p-4">
-          <h1 className="text-3xl font-extrabold">Meal Ideas</h1>
-          {selectedItemName ? (
-            <MealIdeas ingredient={selectedItemName} />
-          ) : (
-            <h2>Select an item to see meal ideas</h2>
-          )}
-        </div>
-      </main>
-    )
-  );
+      <div className="flex-1 p-4">
+        <h1 className="text-3xl font-extrabold">Meal Ideas</h1>
+        {selectedItemName ? (
+          <MealIdeas ingredient={selectedItemName} />
+        ) : (
+          <h2>Select an item to see meal ideas</h2>
+        )}
+      </div>
+    </main>
+  ) : null;
 }
