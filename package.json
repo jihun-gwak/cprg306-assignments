@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "encoding": "^0.1.13",
-    "firebase": "^11.0.1",
-    "next": "^15.0.4-canary.6",
+    "firebase": "^11.0.2",
+    "next": "^15.0.4-canary.20",
     "react": "^18",
     "react-dom": "^18"
   },
