@@ -14,7 +14,7 @@ export default function Page() {
 
   const totalItem = async (newItem) => {
     if (user) {
-      const id = await addItem(newItem, user.uid);
+      const id = await addItem(user.uid, newItem);
       setItems((prevItems) => [...prevItems, { ...newItem, id }]);
     }
   };
